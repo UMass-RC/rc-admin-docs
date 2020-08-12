@@ -1,0 +1,44 @@
+site_name: Unity Cluster Admin Docs
+extra_css: [extra.css]
+theme:
+    name: windmill
+    highlightjs: true
+extra:
+    logo: 'res/logo.png'
+copyright: "Copyright &copy;2020 UMass Amherst"
+markdown_extensions:
+    - admonition
+nav:
+    - Home: main/index.md
+    - Web:
+       - Installing LAMP / Apache Concepts: web/install.md
+       - Shibboleth:
+            - Concepts: web/shibboleth/concepts.md
+            - Shibboleth SP Setup / Apache Integration: web/shibboleth/setup.md
+            - Shibboleth inCommon Integration: web/shibboleth/incommon.md
+       - JupyterHub / JupyterLab:
+            - Concepts: web/jupyter/concepts.md
+            - JupyterHub Components: web/jupyter/components.md
+            - JupyterLab Concepts: web/jupyter/jupyterlab.md
+    - Node Provisioning - MAAS:
+       - Concepts: provision/concepts.md
+       - Setup: provision/setup.md
+       - Ansible Integration: provision/ansible.md
+    - Job Scheduler - Slurm:
+       - Concepts: slurm/concepts.md
+       - Accounting: slurm/accounting.md
+       - Configuration: slurm/configuration.md
+       - Priority Queues: slurm/priority.md
+    - Assets:
+       - PPA: assets/ppa.md
+    - Networking:
+       - Networks/Subnets: network/subnets.md
+       - Palo Alto Firewall:
+           - Concepts: network/palo/concepts.md
+           - NAT: network/palo/nat.md
+           - Policies: network/palo/policies.md
+           - GlobalProtect VPN: network/palo/vpn.md
+           - Quirks: network/palo/quirk.md
+       - Service Node Networking: network/service.md
+    - Modules:
+       - Python: modules/python.md
