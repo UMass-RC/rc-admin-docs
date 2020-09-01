@@ -1,0 +1,3 @@
+## Job Scheduling ##
+
+An HPC cluster's most important piece of software is the job scheduler. In very simple terms, consider this example: your personal computer has many jobs to run, such as opening an app, or playing a video. These jobs are automatically scheduled through your multi-core system. Your system decides when to run that job, on which cores, etc. An HPC job scheduler does the same thing, but across many nodes in a cluster. One key difference is that job schedulers are generally manual. The end-user will decide how many cores/ram their job needs to run, then the job scheduler decides where on the cluster to run it. Unity uses the Slurm job scheduler.

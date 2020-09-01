@@ -1,0 +1,2 @@
+## Centralized Identity Management ##
+Every HPC cluster needs a centralized form of user management. This is because users will be using a number of nodes across the cluster, and all UIDs/GIDs need to be kept consistent on every system. Slurm in particular cares a lot about this. Unity uses LDAP to accomplish this. There are other alternatives, but LDAP seems to be the easiest and most mature solution.
