@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>MGHPCC Shutdown - Unity Cluster Admin Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Procedures for MGHPCC Shutdown", url: "#_top", children: [
+              {title: "Unity Cluster", url: "#unity-cluster" },
+              {title: "Perirhinal", url: "#perirhinal" },
+              {title: "CloudLab / OCT", url: "#cloudlab-oct" },
+              {title: "General", url: "#general" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../identity/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../identity/" class="btn btn-xs btn-link">
+        Introduction
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../main/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../main/" class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="procedures-for-mghpcc-shutdown">Procedures for MGHPCC Shutdown</h1>
+<h3 id="unity-cluster">Unity Cluster</h3>
+<h4 id="power-down">Power Down</h4>
+<ol>
+<li>Block access from the Palo firewall rule.</li>
+<li>Shutdown all Compute Nodes</li>
+<li>Shutdown the containers/VMs running on the head node in this order:</li>
+<li>Licensing Container</li>
+<li>Web VM</li>
+<li>Slurm VM</li>
+<li>Login Container</li>
+<li>NFS-gw VM</li>
+<li>Identity Container</li>
+<li>Shutdown head node</li>
+<li>Shutdown NAS1</li>
+<li>Shutdown astro-th NAS</li>
+<li>Shutdown cee-water NAS</li>
+<li>Shutdown VAST</li>
+<li>Deactivate the cluster. This can be done by clicking on the cluster in the VMS UI maintenance page and hitting pause/deactivate or using VCLI (cluster deactivate) to do the same. Wait until the entire cluster deactivates cleanly on its own.</li>
+<li>Run these on any cnode to initiate shutdown. Cnodes shut down first, followed by Dnodes.
+  <code>#verify clush is healthy
+  clush -a hostname
+  #shutdown the cluster
+  clush -g cnodes 'sudo /usr/sbin/shutdown -h +2'; clush -g dnodes 'sudo /usr/sbin/shutdown -h +5'</code></li>
+<li>Physically unplug power - the nodes come up automatically with power restoration</li>
+</ol>
+<h4 id="power-up">Power Up</h4>
+<ol>
+<li>Power up VAST</li>
+<li>Plug in in the D-nodes and wait for them to power up. Wait 10 minutes to ensure the D-nodes start cleanly.</li>
+<li>Plug in the C-nodes and wait for them to power up. Wait 10 minutes to ensure the C-nodes start cleanly.</li>
+<li>From the web UI, activate the cluster.</li>
+<li>Power up cee-water NAS</li>
+<li>Power up astro-th NAS in person, IPMI not yet set up</li>
+<li>Poewr up NAS1</li>
+<li>Power up head node</li>
+<li>Power up head node VMs/containers</li>
+<li>Identity Container</li>
+<li>NFS-gw VM</li>
+<li>Login Container</li>
+<li>Slurm VM</li>
+<li>Web VM</li>
+<li>Licensing Container</li>
+<li>Power up all compute nodes</li>
+<li>Allow access from Palo Alto</li>
+</ol>
+<h3 id="perirhinal">Perirhinal</h3>
+<h4 id="power-down_1">Power Down</h4>
+<ol>
+<li>Pause all active VMs</li>
+<li>Shutdown from Web UI</li>
+</ol>
+<h4 id="power-up_1">Power Up</h4>
+<ol>
+<li>Power up in-person, IPMI is not available</li>
+</ol>
+<h3 id="cloudlab-oct">CloudLab / OCT</h3>
+<h4 id="power-down_2">Power Down</h4>
+<ol>
+<li>Power down head node</li>
+</ol>
+<h4 id="power-up_2">Power Up</h4>
+<ol>
+<li>Power up head node</li>
+</ol>
+<h3 id="general">General</h3>
+<ol>
+<li>After the above, shut down the PA-3220</li>
+</ol>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../identity/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../identity/" class="btn btn-xs btn-link">
+        Introduction
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../main/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../main/" class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content"><p>Copyright &copy;2020 UMass Amherst</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
