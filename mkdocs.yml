@@ -10,6 +10,7 @@ markdown_extensions:
     - admonition
 nav:
     - Home: main/index.md
+    - MGHPCC Shutdown: shutdown/shutdown.md
     - Networking:
        - Networks/Subnets: network/subnets.md
        - Palo Alto Firewall:
