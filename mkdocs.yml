@@ -1,50 +1,61 @@
-site_name: Unity Cluster Admin Docs
+site_name: Research Computing Docs
 extra_css: [extra.css]
 theme:
-    name: windmill
-    highlightjs: true
-extra:
-    logo: 'res/logo.png'
+    name: material
+    palette:
+        scheme: umass
 copyright: "Copyright &copy;2020 UMass Amherst"
 markdown_extensions:
+    - abbr
+    - attr_list
+    - def_list
     - admonition
+    - footnotes
+    - pymdownx.inlinehilite
+    - pymdownx.keys
+    - pymdownx.superfences
+    - pymdownx.highlight
+    - pymdownx.snippets
+    - pymdownx.details
+    - pymdownx.tabbed
 nav:
-    - Home: main/index.md
+    - Home: index.md
     - MGHPCC Shutdown: shutdown/shutdown.md
-    - Networking:
-       - Networks/Subnets: network/subnets.md
-       - Palo Alto Firewall:
-           - Concepts: network/palo/concepts.md
-           - NAT: network/palo/nat.md
-           - Policies: network/palo/policies.md
-           - GlobalProtect VPN: network/palo/vpn.md
-           - Quirks: network/palo/quirk.md
-       - Service Node Networking: network/service.md
-    - Node Provisioning - MAAS:
-       - Concepts: provision/concepts.md
-       - Setup: provision/setup.md
-       - Ansible Integration: provision/ansible.md
-    - Identity:
-       - Introduction: identity/index.md
-       - OpenLDAP Server: identity/server.md
-       - OpenLDAP Client: identity/client.md
-    - Job Scheduler - Slurm:
-       - Concepts: slurm/concepts.md
-       - Setup: slurm/accounting.md
-       - Accounting: slurm/accounting.md
-       - Configuration: slurm/configuration.md
-       - Priority Queues: slurm/priority.md
-    - Web:
-       - Installing LAMP / Apache Concepts: web/install.md
-       - Shibboleth:
-            - Concepts: web/shibboleth/concepts.md
-            - Shibboleth SP Setup / Apache Integration: web/shibboleth/setup.md
-            - Shibboleth inCommon Integration: web/shibboleth/incommon.md
-       - JupyterHub / JupyterLab:
-            - Concepts: web/jupyter/concepts.md
-            - JupyterHub Components: web/jupyter/components.md
-            - JupyterLab Concepts: web/jupyter/jupyterlab.md
-    - Assets:
-       - PPA: assets/ppa.md
-    - Modules:
-       - Python: modules/python.md
+    - Unity:
+          - Networking:
+                - Networks/Subnets: network/subnets.md
+                - Palo Alto Firewall:
+                      - Concepts: network/palo/concepts.md
+                      - NAT: network/palo/nat.md
+                      - Policies: network/palo/policies.md
+                      - GlobalProtect VPN: network/palo/vpn.md
+                      - Quirks: network/palo/quirk.md
+                - Service Node Networking: network/service.md
+          - Node Provisioning - MAAS:
+                - Concepts: provision/concepts.md
+                - Setup: provision/setup.md
+                - Ansible Integration: provision/ansible.md
+          - Identity:
+                - Introduction: identity/index.md
+                - OpenLDAP Server: identity/server.md
+                - OpenLDAP Client: identity/client.md
+          - Job Scheduler - Slurm:
+                - Concepts: slurm/concepts.md
+                - Setup: slurm/accounting.md
+                - Accounting: slurm/accounting.md
+                - Configuration: slurm/configuration.md
+                - Priority Queues: slurm/priority.md
+          - Web:
+                - Installing LAMP / Apache Concepts: web/install.md
+                - Shibboleth:
+                      - Concepts: web/shibboleth/concepts.md
+                      - Shibboleth SP Setup / Apache Integration: web/shibboleth/setup.md
+                      - Shibboleth inCommon Integration: web/shibboleth/incommon.md
+                - JupyterHub / JupyterLab:
+                      - Concepts: web/jupyter/concepts.md
+                      - JupyterHub Components: web/jupyter/components.md
+                      - JupyterLab Concepts: web/jupyter/jupyterlab.md
+          - Assets:
+                - PPA: assets/ppa.md
+          - Modules:
+                - Python: modules/python.md
